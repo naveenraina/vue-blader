@@ -29,19 +29,11 @@
 </template>
 
 <script>
-// import Vue from 'vue'
-import SampleComponent1 from './SampleComponent1'
-import SampleComponent2 from './SampleComponent2'
+
 export default {
     name: 'BladeContainer',
-    components: { 
-        /* eslint-disable vue/no-unused-components */
-        SampleComponent1, 
-        /* eslint-disable vue/no-unused-components */
-        SampleComponent2 
-    },
     props: {
-        
+
     },
     data(){
         return {
@@ -49,31 +41,18 @@ export default {
                 {
                     id: "list1",
                     title: 'List 1',
-                    component: 'SampleComponent1', 
+                    component: 'SampleComponent1',
                 }
             ]
         }
     },
     methods: {
         addList() {
-
-            //create an instance of a component
-            // var ComponentClass = Vue.extend(SampleComponent1)
-            // var comp = new ComponentClass()
-
-            // comp.$mount() // pass nothing
-            // this.$refs.container.appendChild(comp.$el)
-
             this.listData.push({
                 id: "list" + (this.listData.length + 1),
                 title: 'List ' + (this.listData.length + 1),
-                component: 'SampleComponent2', 
+                component: 'SampleComponent2',
             })
-
-            // const l = document.querySelectorAll('main > .list');
-            // const newNode = l[0].cloneNode(true);
-            // newNode.querySelector('.header').innerHTML = 'List ' + (l.length + 1)
-            // document.querySelector('main').appendChild(newNode);
         },
         remList(mi) {
             const l = document.querySelectorAll('main > .list');
