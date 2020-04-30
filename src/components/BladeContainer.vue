@@ -8,43 +8,19 @@
             <a class="button" @click="addList();">Add</a>
         </header>
         <main>
-            <div class="list">
-                <div class="header">List 1</div>
-                <div class="columns">
-                    <div class="main">Item ID</div>
-                    <div class="secondary">Status</div>
-                    <div class="secondary">Description</div>
-                </div>
+            <div v-for="item in listData" v-bind:key="item.id" class="list">
+                <div class="header">{{item.title}}</div>
                 <ul>
-                    <li>
-                        <div class="main">Item 1</div>
-                        <div class="secondary">Active</div>
-                        <div class="secondary">Item 1 description</div>
+                     <li>
+                        <div class="main">{{item.title}}</div>
+                        <!-- <div class="secondary">Active</div>
+                        <div class="secondary">Item 1 description</div> -->
                     </li>
                     <li>
-                        <div class="main">Item 2</div>
-                        <div class="secondary">Suspended</div>
-                        <div class="secondary">Second Item description</div>
+                        <component v-bind:is="item.component"></component>
                     </li>
-                    <li>
-                        <div class="main">Item 3</div>
-                        <div class="secondary">Disabled</div>
-                        <div class="secondary">Description for third item</div>
-                    </li>
-                    <li>
-                        <div class="main">Item 4</div>
-                        <div class="secondary">Active</div>
-                        <div class="secondary">May the 4th item be with you</div>
-                    </li>
-                    <li>
-                        <div class="main">Item 5</div>
-                        <div class="secondary">Inactive</div>
-                        <div class="secondary">Cinco de mayo</div>
-                    </li>
-                    <li @click="remList(this)">
+                    <li @click="remList('container' + item.id)">
                         <div class="main">Remove</div>
-                        <div class="secondary">Inactive</div>
-                        <div class="secondary">Cinco de mayo</div>
                     </li>
                 </ul>
             </div>
@@ -53,17 +29,51 @@
 </template>
 
 <script>
+// import Vue from 'vue'
+import SampleComponent1 from './SampleComponent1'
+import SampleComponent2 from './SampleComponent2'
 export default {
     name: 'BladeContainer',
+    components: { 
+        /* eslint-disable vue/no-unused-components */
+        SampleComponent1, 
+        /* eslint-disable vue/no-unused-components */
+        SampleComponent2 
+    },
     props: {
-
+        
+    },
+    data(){
+        return {
+            listData: [
+                {
+                    id: "list1",
+                    title: 'List 1',
+                    component: 'SampleComponent1', 
+                }
+            ]
+        }
     },
     methods: {
         addList() {
-            const l = document.querySelectorAll('main > .list');
-            const newNode = l[0].cloneNode(true);
-            newNode.querySelector('.header').innerHTML = 'List ' + (l.length + 1)
-            document.querySelector('main').appendChild(newNode);
+
+            //create an instance of a component
+            // var ComponentClass = Vue.extend(SampleComponent1)
+            // var comp = new ComponentClass()
+
+            // comp.$mount() // pass nothing
+            // this.$refs.container.appendChild(comp.$el)
+
+            this.listData.push({
+                id: "list" + (this.listData.length + 1),
+                title: 'List ' + (this.listData.length + 1),
+                component: 'SampleComponent2', 
+            })
+
+            // const l = document.querySelectorAll('main > .list');
+            // const newNode = l[0].cloneNode(true);
+            // newNode.querySelector('.header').innerHTML = 'List ' + (l.length + 1)
+            // document.querySelector('main').appendChild(newNode);
         },
         remList(mi) {
             const l = document.querySelectorAll('main > .list');
