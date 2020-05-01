@@ -9,19 +9,20 @@
         </header>
         <main>
             <div v-for="item in listData" v-bind:key="item.id" class="list">
-                <div class="header">{{item.title}}</div>
+                <div class="header">
+                    {{item.id}}
+                </div>
                 <ul>
                      <li>
                         <div class="main">{{item.title}}</div>
+                        <img src="./../assets/x.svg" alt="close" @click="remList('container' + item.id)"/>
                         <!-- <div class="secondary">Active</div>
                         <div class="secondary">Item 1 description</div> -->
                     </li>
                     <li>
                         <component v-bind:is="item.component"></component>
                     </li>
-                    <li @click="remList('container' + item.id)">
-                        <div class="main">Remove</div>
-                    </li>
+                    
                 </ul>
             </div>
         </main>
@@ -39,8 +40,8 @@ export default {
         return {
             listData: [
                 {
-                    id: "list1",
-                    title: 'List 1',
+                    id: "List1",
+                    title: 'Templates',
                     component: 'ListTemplate',
                 }
             ]
@@ -49,8 +50,8 @@ export default {
     methods: {
         addList() {
             this.listData.push({
-                id: "list" + (this.listData.length + 1),
-                title: 'List ' + (this.listData.length + 1),
+                id: "List" + (this.listData.length + 1),
+                title: 'Section Types',
                 component: 'ListSectionType',
             })
         },
