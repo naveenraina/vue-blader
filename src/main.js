@@ -1,12 +1,20 @@
 import Vue from 'vue'
 import App from './App.vue'
 
-import SampleComponent1 from './components/SampleComponent1'
-import SampleComponent2 from './components/SampleComponent2'
+import ListTemplate from './components/ListTemplate'
+import ListSectionType from './components/ListSectionType'
+import ListSection from './components/ListSection'
+import DetailTemplate from './components/DetailTemplate'
+import DetailSectionType from './components/DetailSectionType'
+import DetailSection from './components/DetailSection'
 
 Vue.config.productionTip = false
-Vue.component('SampleComponent1', SampleComponent1)
-Vue.component('SampleComponent2', SampleComponent2)
+Vue.component('ListTemplate', ListTemplate)
+Vue.component('ListSectionType', ListSectionType)
+Vue.component('ListSection', ListSection)
+Vue.component('DetailTemplate', DetailTemplate)
+Vue.component('DetailSectionType', DetailSectionType)
+Vue.component('DetailSection', DetailSection)
 
 new Vue({
   render: h => h(App)

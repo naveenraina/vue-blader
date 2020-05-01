@@ -1,10 +1,10 @@
 <template>
     <div>
-        Sample Component 2
+        <h4>Template Detail</h4>
     </div>
 </template>
 <script>
 export default {
-    name: 'SampleComponent2',
+    name: 'DetailTemplate',
 }
 </script>

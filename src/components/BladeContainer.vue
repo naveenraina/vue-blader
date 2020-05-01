@@ -41,7 +41,7 @@ export default {
                 {
                     id: "list1",
                     title: 'List 1',
-                    component: 'SampleComponent1',
+                    component: 'ListTemplate',
                 }
             ]
         }
@@ -51,7 +51,7 @@ export default {
             this.listData.push({
                 id: "list" + (this.listData.length + 1),
                 title: 'List ' + (this.listData.length + 1),
-                component: 'SampleComponent2',
+                component: 'ListSectionType',
             })
         },
         remList(mi) {

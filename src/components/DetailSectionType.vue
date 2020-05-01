@@ -1,10 +1,10 @@
 <template>
     <div>
-        Sample Component 1
+        <h4>Section Type Detail</h4>
     </div>
 </template>
 <script>
 export default {
-    name: 'SampleComponent1',
+    name: 'DetailSectionType',
 }
 </script>
