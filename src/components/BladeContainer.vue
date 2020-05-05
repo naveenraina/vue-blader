@@ -8,7 +8,7 @@
             <a class="button" @click="addList();">Add</a>
         </header>
         <main>
-            <div v-for="item in listData" v-bind:key="item.id" class="list">
+            <div v-for="item in listData" v-bind:key="item.id" class="list" :ref="'container' + item.id">
                 <div class="header">
                     {{item.id}}
                 </div>
@@ -56,11 +56,11 @@ export default {
             })
         },
         remList(mi) {
-            const l = document.querySelectorAll('main > .list');
-            if(l.length > 1) {
-                const menu = mi.parentElement.parentElement
-                menu.remove()
+            const el = this.$refs[mi]
+            if(el.length > 0){
+                el[0].remove()
             }
+            
         }
     }
 }
