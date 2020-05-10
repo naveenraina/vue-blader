@@ -3,7 +3,7 @@
         <ul>
             <li v-for="item in templates" @click="setCurrentTemplate(item)" v-bind:key="item.id">{{item.title}}</li>
 
-            <li @click="add()">ADD</li>
+            <li @click="addTemplate('new template')">ADD</li>
         </ul>
     </div>
 </template>
@@ -22,13 +22,7 @@ export default {
         })
     },
     methods: {
-        ...mapActions("templates", ["setCurrentTemplate"]),
-        showDetail(){
-
-        },
-        add(){
-            this.templates.push({ title: 'template new' })
-        }
+        ...mapActions("templates", ["setCurrentTemplate", "addTemplate"])
         
     }
 }
