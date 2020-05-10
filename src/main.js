@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import store from "./store";
 
 import ListTemplate from './components/ListTemplate'
 import ListSectionType from './components/ListSectionType'
@@ -17,5 +18,6 @@ Vue.component('DetailSectionType', DetailSectionType)
 Vue.component('DetailSection', DetailSection)
 
 new Vue({
-  render: h => h(App)
+    store,
+    render: h => h(App)
 }).$mount('#app')

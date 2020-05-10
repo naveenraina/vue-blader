@@ -1,14 +1,18 @@
 <template>
     <div>
         <ul>
-            <li>ST 1</li>
-            <li>ST 2</li>
-            <li>ST 3</li>
+            <li v-for="item in sectionTypes"  v-bind:key="item.id">{{item.title}}</li>
         </ul>
     </div>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
     name: 'ListSectionType',
+    computed: {
+        ...mapState({
+            sectionTypes: state => state.sectiontypes.sectionTypes
+        })
+    }
 }
 </script>
