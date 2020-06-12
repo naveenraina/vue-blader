@@ -4,9 +4,10 @@ import * as getters from "./getters";
 
 const initialState = {
   sectionTypes: [
-        { id: 1, title: 'section type 1' },
-        { id: 2, title: 'section type 2' }
-    ]
+        // { id: 1, title: 'section type 1' },
+        // { id: 2, title: 'section type 2' }
+    ],
+  currentSectionTypes: []
 };
 
 export default {

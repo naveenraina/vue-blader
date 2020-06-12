@@ -11,7 +11,7 @@
     </div>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapState,mapActions } from "vuex";
 export default {
     name: 'ListSectionType',
     data(){
@@ -22,17 +22,18 @@ export default {
     },
     computed: {
         ...mapState({
-            sectionTypes: state => state.sectiontypes.sectionTypes
+            sectionTypes: state => state.sectiontypes.currentSectionTypes,
+            activeTemplateId: state => state.templates.activeTemplateId,
         })
     },
     methods: {
         addComponent() {
-            // this.addSectionType(this.inputText);
+            this.addSectionType({title:this.inputText, templateId:this.activeTemplateId});
             this.isAddSectionType = false 
             this.$emit('addComponent', {title:'Sections', component:'listSection'})
 
         },
-        // ...mapActions("templates", ["setCurrentTemplate", "addTemplate"])
+        ...mapActions("sectiontypes", ["addSectionType"])
         
     }
 }
