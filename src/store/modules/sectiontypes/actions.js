@@ -9,6 +9,10 @@ export const getSectionTypes = ({ commit }, data) => {
     // ]
   commit(types.SECTIONTYPES, id);
 };
+export const setCurrentSectionType = ({ commit, dispatch }, data) => {
+  commit(types.SETCURRENTSECTIONTYPE, data);
+  dispatch('sections/getSections', {id: data.id}, {root: true})
+};
 
 export const addSectionType = ({ commit }, data) => {
   commit(types.ADDSECTIONTYPE, data);

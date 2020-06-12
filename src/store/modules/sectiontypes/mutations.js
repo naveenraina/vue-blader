@@ -12,8 +12,13 @@ const mutations = {
     });
     
   },
+  [types.SETCURRENTSECTIONTYPE](state, data) {
+    // state.currentSectionTypes = data;
+    state.activeSectionTypeId = data.id  },
+
   [types.ADDSECTIONTYPE](state, data) {
     state.sectionTypes.push({id: state.sectionTypes.length + 1, title: data.title,templateId: data.templateId})
+    state.activeSectionTypeId = state.sectionTypes.length
     state.currentSectionTypes = []
     state.sectionTypes.forEach(element => {
       if(element.templateId === data.templateId) {

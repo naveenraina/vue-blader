@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul>
-            <li v-for="item in sectionTypes"  v-bind:key="item.id">{{item.title}}</li>
+            <li v-for="item in sectionTypes"  @click="setCurrentSectionType(item)" v-bind:key="item.id">{{item.title}}</li>
             <li v-if="isAddSectionType == false" @click="isAddSectionType = true; inputText = ''">ADD</li>
             <template v-else><input type="text" v-model="inputText">
             <button class="btn btn-primary" @click="addComponent"> add</button>
@@ -33,7 +33,7 @@ export default {
             this.$emit('addComponent', {title:'Sections', component:'listSection'})
 
         },
-        ...mapActions("sectiontypes", ["addSectionType"])
+        ...mapActions("sectiontypes", ["addSectionType","setCurrentSectionType"])
         
     }
 }

@@ -3,14 +3,12 @@ import * as actions from "./actions";
 import * as getters from "./getters";
 
 const initialState = {
-  sectionTypes: [
+  sections: [
         // { id: 1, title: 'section type 1' },
         // { id: 2, title: 'section type 2' }
     ],
-  currentSectionTypes: [],
-  activeSectionTypeId: null
+  currentSections: []
 };
-
 
 export default {
   namespaced: true,
