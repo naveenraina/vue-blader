@@ -15,7 +15,7 @@
                 <ul>
                      <li>
                         <div class="main">{{item.title}}</div>
-                        <img src="./../assets/x.svg" alt="close" @click="remList('container' + item.id)"/>
+                        <img src="./../assets/x.svg" alt="close" @click="remList(item.id)"/>
                         <!-- <div class="secondary">Active</div>
                         <div class="secondary">Item 1 description</div> -->
                     </li>
@@ -70,10 +70,17 @@ export default {
         },
         
         remList(mi) {
-            const el = this.$refs[mi]
-            if(el.length > 0){
-                el[0].remove()
-            }
+          var index = this.listData.find(x => x.id === mi)
+          if(mi === "List2") {
+            this.listData.splice(1,2)
+          } else {
+            this.listData.splice(this.listData.indexOf(index),1)
+          }
+          
+            // const el = this.$refs[mi]
+            // if(el.length > 0){
+            //     el[0].remove()
+            // }
             
         }
     }
