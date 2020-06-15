@@ -1,9 +1,13 @@
 <template>
     <div>
         <ul>
-            <li v-for="item in templates" @click="setCurrentTemplate(item)" v-bind:key="item.id">{{item.title}}</li>
+            <li v-for="item in templates" @click="setCurrentComponent(item)" v-bind:key="item.id">{{item.title}}</li>
 
-            <li @click="addTemplate('new template')">ADD</li>
+            <li v-if="isAddTemplate == false" @click="isAddTemplate = true; inputText = ''">ADD</li>
+            <template v-else><input type="text" v-model="inputText">
+            <button class="btn btn-primary" @click="addComponent"> add</button>
+            <button class="btn btn-primary" @click="isAddTemplate = false "> cancel</button>
+            </template>
         </ul>
     </div>
 </template>
@@ -13,7 +17,8 @@ export default {
     name: 'ListTemplate',
     data(){
         return {
-            
+            isAddTemplate: false,
+            inputText: ''
         }
     },
     computed: {
@@ -22,6 +27,17 @@ export default {
         })
     },
     methods: {
+        addComponent() {
+            this.addTemplate(this.inputText);
+            this.isAddTemplate = false 
+            this.$emit('addComponent', {title:'Section Types', component:'listSectionType'})
+
+        },
+        setCurrentComponent (item) {
+            this.setCurrentTemplate(item)
+            this.$emit('addComponent', {title:'Section Types', component:'listSectionType'})
+
+        },
         ...mapActions("templates", ["setCurrentTemplate", "addTemplate"])
         
     }

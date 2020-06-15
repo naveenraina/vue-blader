@@ -6,6 +6,7 @@ export const setCurrentTemplate = ({ commit, dispatch }, data) => {
 };
 
 export const addTemplate = ({ commit }, data) => {
-    commit(types.ADDTEMPLATE, data);
+    commit(types.ADDTEMPLATE, data)
+    ;
   };
 
