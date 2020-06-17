@@ -9,7 +9,7 @@
         </header>
         <main>
             <div v-for="item in listData" v-bind:key="item.id" class="list" :ref="'container' + item.id">
-                <div class="header">
+                <div class="header" >
                     {{item.id}}
                 </div>
                 <ul>
@@ -20,7 +20,7 @@
                         <div class="secondary">Item 1 description</div> -->
                     </li>
                     <li>
-                        <component v-bind:is="item.component" @addComponent="addComponent"></component>
+                        <component v-bind:is="item.component" @addComponent="addComponent" @remList="remList"></component>
                     </li>
                     
                 </ul>

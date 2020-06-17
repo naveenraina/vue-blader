@@ -9,8 +9,22 @@ export const getSections = ({ commit }, data) => {
     // ]
   commit(types.SECTIONS, id);
 };
+export const emptySection = ({ commit }) => {
+   
+  commit(types.EMPTYSECTION);
+};
+export const setCurrentSection = ({ commit }, data) => {
+   
+  commit(types.SETCURRENTSECTION, data);
+};
 
 export const addSection = ({ commit }, data) => {
-  commit(types.ADDSECTION, data);
+    if(data.sectionId) {
+        commit(types.EDITSECTION, data);
+    } else {
+        commit(types.ADDSECTION, data);
+
+    }
+  
 };
 

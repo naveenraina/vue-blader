@@ -7,7 +7,9 @@ const initialState = {
         // { id: 1, title: 'section type 1' },
         // { id: 2, title: 'section type 2' }
     ],
-  currentSections: []
+  currentSections: [],
+  activeSectionId: null,
+  currentSection: {id:'', title:'', details: ''}
 };
 
 export default {

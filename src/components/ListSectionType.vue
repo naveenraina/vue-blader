@@ -45,7 +45,7 @@ export default {
         })
     },
     methods: {
-         setCurrentComponent (item) {
+        setCurrentComponent (item) {
             this.setCurrentSectionType(item)
             this.$emit('addComponent', {title:'Sections', component:'listSection'})
         },
