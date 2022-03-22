@@ -3,12 +3,13 @@ import * as actions from "./actions";
 import * as getters from "./getters";
 
 const initialState = {
-    activeTemplateId: null,
-    templates: [
-        // { id: 1, title: 'template 1' },
-        // { id: 2, title: 'template 2' },
+  sections: [
+        // { id: 1, title: 'section type 1' },
+        // { id: 2, title: 'section type 2' }
     ],
-    currentTemplate: { id: 1, title: 'template 1' }
+  currentSections: [],
+  activeSectionId: null,
+  currentSection: {id:'', title:'', details: ''}
 };
 
 export default {

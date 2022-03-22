@@ -5,22 +5,22 @@
                 <div class="section">Section</div>
             </div>
             <div class="separator"></div>
-            <a class="button" @click="addList();">Add</a>
+            <!-- <a class="button" @click="addList();">Add</a> -->
         </header>
         <main>
             <div v-for="item in listData" v-bind:key="item.id" class="list" :ref="'container' + item.id">
-                <div class="header">
+                <div class="header" >
                     {{item.id}}
                 </div>
                 <ul>
                      <li>
                         <div class="main">{{item.title}}</div>
-                        <img src="./../assets/x.svg" alt="close" @click="remList('container' + item.id)"/>
+                        <img src="./../assets/x.svg" alt="close" @click="remList(item.id)"/>
                         <!-- <div class="secondary">Active</div>
                         <div class="secondary">Item 1 description</div> -->
                     </li>
                     <li>
-                        <component v-bind:is="item.component"></component>
+                        <component v-bind:is="item.component" @addComponent="addComponent" @remList="remList"></component>
                     </li>
                     
                 </ul>
@@ -55,11 +55,32 @@ export default {
                 component: 'ListSectionType',
             })
         },
+        addComponent(data) {
+          var index = this.listData.find(x => x.component === data.component)
+          
+          if(index === undefined) {
+            this.listData.push({
+              id: "List" + (this.listData.length + 1),
+              title: data.title,
+              component: data.component,
+           })
+
+          }   
+            
+        },
+        
         remList(mi) {
-            const el = this.$refs[mi]
-            if(el.length > 0){
-                el[0].remove()
-            }
+          var index = this.listData.find(x => x.id === mi)
+          if(mi === "List2") {
+            this.listData.splice(1,2)
+          } else {
+            this.listData.splice(this.listData.indexOf(index),1)
+          }
+          
+            // const el = this.$refs[mi]
+            // if(el.length > 0){
+            //     el[0].remove()
+            // }
             
         }
     }

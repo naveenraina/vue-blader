@@ -9,6 +9,8 @@ import DetailTemplate from './components/DetailTemplate'
 import DetailSectionType from './components/DetailSectionType'
 import DetailSection from './components/DetailSection'
 
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
 Vue.config.productionTip = false
 Vue.component('ListTemplate', ListTemplate)
 Vue.component('ListSectionType', ListSectionType)
